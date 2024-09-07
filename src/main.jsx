@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       {
         path: "/Cart",
         element: <PrivateRoute><CartOverview></CartOverview></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:3000/cart`)
+        loader: ({params}) => fetch(`https://furni-flex-server-fawn.vercel.app/cart`)
       },
     ],
   },

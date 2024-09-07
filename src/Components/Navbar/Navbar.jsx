@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user, Logout } = useContext(AuthContext);
   const [items, setItems] = useState([]);
 
-  const url = `http://localhost:3000/cart?email=${user?.email}`;
+  const url = `https://furni-flex-server-fawn.vercel.app/cart?email=${user?.email}`;
 
   useEffect(() => {
     fetch(url)

@@ -7,7 +7,7 @@ const CartOverview = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const url = `http://localhost:3000/cart?email=${user?.email}`;
+  const url = `https://furni-flex-server-fawn.vercel.app/cart?email=${user?.email}`;
 
   useEffect(() => {
     if (user?.email) {
@@ -42,7 +42,7 @@ const CartOverview = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/cart/${id}`, {
+        fetch(`https://furni-flex-server-fawn.vercel.app/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => {
@@ -88,7 +88,7 @@ const CartOverview = () => {
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity <= 0) return;
 
-    fetch(`http://localhost:3000/cart/${id}`, {
+    fetch(`https://furni-flex-server-fawn.vercel.app/cart/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

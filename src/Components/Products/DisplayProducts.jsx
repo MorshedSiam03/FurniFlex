@@ -9,7 +9,7 @@ const DisplayProducts = () => {
   const productsPerPage = 6;
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("https://furni-flex-server-fawn.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -41,7 +41,7 @@ const DisplayProducts = () => {
     };
   
     // First check if the product is already in the cart
-    fetch(`http://localhost:3000/cart?email=${user.email}&itemId=${product._id}`)
+    fetch(`https://furni-flex-server-fawn.vercel.app/cart?email=${user.email}&itemId=${product._id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
@@ -49,7 +49,7 @@ const DisplayProducts = () => {
           const existingItem = data[0];
           const updatedQuantity = existingItem.quantity + 1; // Increment quantity
   
-          fetch(`http://localhost:3000/cart/${existingItem._id}`, {
+          fetch(`https://furni-flex-server-fawn.vercel.app/cart/${existingItem._id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const DisplayProducts = () => {
             });
         } else {
           // If the product is not in the cart, add it
-          fetch("http://localhost:3000/cart", {
+          fetch("https://furni-flex-server-fawn.vercel.app/cart", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
