@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Recliner Chair Wood",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended.",
+      "image": "/src/assets/Image/Chair_Image/Recliner Chair Wood.png"
+    },
+    {
+      "name": "Timber Ride Padded",
+      "price": 59.00,
+      "original_price": 75.00,
+      "discount_percentage": "30",
+      "description": "High Back Rocking Side Pocket Portable Folding Outdoor Camping Chairs.",
+      "image": "/src/assets/Image/Chair_Image/Timber Ride Padded.png"
+    },
+    {
+      "name": "Colored Wooden Chair",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended.",
+      "image": "/src/assets/Image/Chair_Image/Colored Wooden Chair.png"
+    },
+    {
+      "name": "Blank Bamboo Wicker",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs.",
+      "image": "/src/assets/Image/Chair_Image/Blank Bamboo Wicker.png"
+    },
+    {
+      "name": "Isolated Wooden Rock",
+      "price": 165.00,
+      "original_price": 400.00,
+      "discount_percentage": "30",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended.",
+      "image": "/src/assets/Image/Chair_Image/Isolated Wooden Rock.png"
+    },
+    {
+      "name": "Blank Bamboo Wicker",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs.",
+      "image": "/src/assets/Image/Chair_Image/Blank Bamboo Wicker.png"
+    },
+    {
+      "name": "Isolated Wooden Rock",
+      "price": 165.00,
+      "original_price": 400.00,
+      "discount_percentage": "30",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended.",
+      "image": "/src/assets/Image/Chair_Image/Isolated Wooden Rock.png"
+    },
+    {
+      "name": "Blank Bamboo Wicker",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs.",
+      "image": "/src/assets/Image/Chair_Image/Blank Bamboo Wicker.png"
+    },
+    {
+      "name": "Isolated Wooden Rock",
+      "price": 165.00,
+      "original_price": 400.00,
+      "discount_percentage": "30",
+      "description": "It has a backrest that can be tilted back, and often a footrest extended.",
+      "image": "/src/assets/Image/Chair_Image/Isolated Wooden Rock.png"
+    },
+    {
+      "name": "Blank Bamboo Wicker",
+      "price": 299.00,
+      "original_price": 350.00,
+      "discount_percentage": "30",
+      "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs.",
+      "image": "/src/assets/Image/Chair_Image/Blank Bamboo Wicker.png"
+    }
+  ]
+  
