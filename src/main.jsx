@@ -10,6 +10,7 @@ import Main from "./Layout/Main.jsx";
 import CartOverview from "./Components/Cart/CartOverview.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import PrivateRoute from "./Components/Routes/PrivateRoute.jsx";
+import Products from "./Components/Products/Products.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,11 +20,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Products></Products>,
+      },
+      {
+        path: "/home",
+        element: <Products></Products>,
+      },
+      {
+        path: "/products",
+        element: <Products></Products>,
+      },
+      {
+        path: "/categories",
+        element: <Products></Products>,
+      },
+      {
+        path: "/custom",
+        element: <Products></Products>,
+      },
+      {
+        path: "/blog",
+        element: <Products></Products>,
       },
       {
         path: "/Cart",
         element: <PrivateRoute><CartOverview></CartOverview></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:3000/cart`)
       },
     ],
   },

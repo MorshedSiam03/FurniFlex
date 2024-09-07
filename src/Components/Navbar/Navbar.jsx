@@ -1,14 +1,28 @@
-import {  useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-    const {user, Logout} =useContext(AuthContext);
-    const handleLogout = () => {
-        Logout()
-          .then(() => {})
-          .catch((error) => console.error(error));
-      };
+  const { user, Logout } = useContext(AuthContext);
+  const [items, setItems] = useState([]);
+
+  const url = `http://localhost:3000/cart?email=${user?.email}`;
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        // Additional filtering on the client side
+        const filteredItems = data.filter((item) => item.email === user?.email);
+        setItems(filteredItems);
+      });
+  }, [url, user?.email]);
+
+  const handleLogout = () => {
+    Logout()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   const navItems = (
     <>
       <li>
@@ -22,7 +36,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/products"
           className={({ isActive }) => (isActive ? "font-bold" : "")}
         >
           Products
@@ -93,56 +107,57 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link >
+          <Link>
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost hover:bg-transparent btn-circle relative mx-3"
             >
-              <Link to='/Cart'>
-              <div className="indicator">
-                <img src="/src/assets/Icon/Added.svg" alt="" />
-                <span className="badge badge-lg bg-[#323232] px-2 py-3 text-white font-medium text-sm indicator-item absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2">
-                  0
-                </span>
-              </div>
+              <Link to="/Cart">
+                <div className="indicator">
+                  <img src="/src/assets/Icon/Added.svg" alt="" />
+                  <span className="badge badge-lg bg-[#323232] px-2 py-3 text-white font-medium text-sm indicator-item absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2">
+                    {items.length}
+                  </span>
+                </div>
               </Link>
             </div>
           </Link>
 
-          {user? 
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="User Profile"
-                  src={user?.photoURL}
-                />
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img alt="User Profile" src={user?.photoURL} />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    {user?.displayName}
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Logout</a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">
-                  {user?.displayName}
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a onClick={handleLogout}>Logout</a>
-              </li>
-            </ul>
-          </div> :
-          <Link to='/SignIn' className="btn">SignIn</Link> }
+          ) : (
+            <Link to="/SignIn" className="btn">
+              SignIn
+            </Link>
+          )}
         </div>
       </div>
     </div>

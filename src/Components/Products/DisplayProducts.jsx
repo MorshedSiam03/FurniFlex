@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const DisplayProducts = () => {
+  const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6; // Number of products per page
+  const productsPerPage = 6;
 
   useEffect(() => {
-    fetch("/public/products.json")
+    fetch("http://localhost:3000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -14,7 +17,10 @@ const DisplayProducts = () => {
   // Calculate the index of products for the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const displayedProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const displayedProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   // Calculate total number of pages
   const totalPages = Math.ceil(products.length / productsPerPage);
@@ -23,11 +29,89 @@ const DisplayProducts = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleAddToCart = (product) => {
+    const Product = {
+      itemId: product._id,
+      itemName: product.name,
+      price: product.price,
+      image: product.image,
+      CustomerName: user.displayName,
+      email: user.email,
+      quantity: 1 // Default quantity is 1
+    };
+  
+    // First check if the product is already in the cart
+    fetch(`http://localhost:3000/cart?email=${user.email}&itemId=${product._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length > 0) {
+          // If the product is already in the cart, update its quantity
+          const existingItem = data[0];
+          const updatedQuantity = existingItem.quantity + 1; // Increment quantity
+  
+          fetch(`http://localhost:3000/cart/${existingItem._id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ quantity: updatedQuantity }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.modifiedCount > 0) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Product quantity updated in cart",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Something went wrong!",
+                });
+              }
+            });
+        } else {
+          // If the product is not in the cart, add it
+          fetch("http://localhost:3000/cart", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(Product),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Product added to cart",
+                  showConfirmButton: false,
+                  timer: 1500,
+                }).then(() => {
+                    window.location.reload(); // Refresh the page to update cart count
+                  });
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Something went wrong!",
+                });
+              }
+            });
+        }
+      });
+  };
+
   return (
     <div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
         {displayedProducts.map((product) => (
-          <div key={product.id}>
+          <div key={product._id}> {/* Use _id or id */}
             <div className="rounded-xl bg-base-100 p-5 shadow-sm">
               <figure>
                 <img
@@ -41,15 +125,23 @@ const DisplayProducts = () => {
                   {product.name}
                 </p>
                 <div className="flex gap-3 justify-start my-2 text-lg">
-                  <p className="font-bold">€ {product.price.toFixed(2)}</p>{" "}
-                  <p className="line-through">€ {product.original_price.toFixed(2)}</p>{" "}
+                  <p className="font-bold">€ {product.price.toFixed(2)}</p>
+                  <p className="line-through">
+                    € {product.original_price?.toFixed(2)}
+                  </p>
                   <p className="font-bold text-red-600">
                     {product.discount_percentage}% OFF
-                  </p>{" "}
+                  </p>
                 </div>
                 <p className="text-sm text-justify">{product.description}</p>
-                <button className="btn mt-3 w-full bg-black text-white">
-                  <img src="/src/assets/Icon/Added Light.svg" alt="" /> Add to Cart
+
+                {/* Use arrow function to pass product */}
+                <button
+                  onClick={() => handleAddToCart(product)} // Fix this
+                  className="btn mt-3 w-full bg-black text-white"
+                >
+                  <img src="/src/assets/Icon/Added Light.svg" alt="" /> Add to
+                  Cart
                 </button>
               </div>
             </div>
@@ -63,7 +155,11 @@ const DisplayProducts = () => {
           <ul className="inline-flex space-x-2">
             <li>
               <button
-                className={`px-3 py-1 rounded-md border ${currentPage === 1 ? "opacity-50 cursor-not-allowed bg-[#DADADA]" : ""}`}
+                className={`px-3 py-1 rounded-md border ${
+                  currentPage === 1
+                    ? "opacity-50 cursor-not-allowed bg-[#DADADA]"
+                    : ""
+                }`}
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
@@ -88,7 +184,11 @@ const DisplayProducts = () => {
 
             <li>
               <button
-                className={`px-3 py-1 rounded-md border ${currentPage === totalPages ? "opacity-50 cursor-not-allowed bg-[#DADADA]" : ""}`}
+                className={`px-3 py-1 rounded-md border ${
+                  currentPage === totalPages
+                    ? "opacity-50 cursor-not-allowed bg-[#DADADA]"
+                    : ""
+                }`}
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
