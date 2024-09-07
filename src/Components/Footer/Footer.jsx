@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-5">
         {/* Logo and Brand */}
         <div className="flex flex-col lg:items-center">
-          <img src="/src/assets/Icon/Dark_Logo.svg" className='w-40' alt="" />
+          <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Dark_Logo.svg" className='w-40' alt="" />
         </div>
 
         {/* About Us Links */}

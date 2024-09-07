@@ -98,7 +98,7 @@ const Navbar = () => {
             </ul>
           </div>
           <NavLink to="/">
-            <img src="/src/assets/Icon/Logo.svg" alt="Logo" />
+            <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Logo.svg" alt="Logo" />
           </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -115,7 +115,7 @@ const Navbar = () => {
             >
               <Link to="/Cart">
                 <div className="indicator">
-                  <img src="/src/assets/Icon/Added.svg" alt="" />
+                  <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Added.svg" alt="" />
                   <span className="badge badge-lg bg-[#323232] px-2 py-3 text-white font-medium text-sm indicator-item absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2">
                     {items.length}
                   </span>

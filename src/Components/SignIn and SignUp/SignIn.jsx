@@ -124,7 +124,7 @@ const SignIn = () => {
           <div className="flex justify-between space-x-2">
             <button onClick={handleGoogleLogin} className="w-1/2 btn bg-white font-semibold flex items-center justify-center p-3 border border-gray-300 rounded-lg">
               <img
-                src="/src/assets/Icon/google-logo.svg"
+                src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/google-logo.svg"
                 alt="Google"
                 className="w-5 mr-2"
               />
@@ -132,7 +132,7 @@ const SignIn = () => {
             </button>
             <button className="w-1/2 btn bg-white flex font-semibold items-center justify-center p-3 border border-gray-300 rounded-lg">
               <img
-                src="/src/assets/Icon/apple-logo.svg"
+                src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/apple-logo.svg"
                 alt="Apple"
                 className="w-5 mr-2"
               />
@@ -154,7 +154,7 @@ const SignIn = () => {
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center text-white p-5">
             <img
-              src="/src/assets/Icon/SignUp_Logo.svg"
+              src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/SignUp_Logo.svg"
               alt="FurniFlex"
               className="mx-auto mb-4"
             />
@@ -166,7 +166,7 @@ const SignIn = () => {
           </div>
         </div>
         <img
-          src="/src/assets/Image/SignUp_Image.png"
+          src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/main/src/assets/Image/SignUp_Image.png"
           alt="Chair"
           className="w-full h-[100vh] object-cover opacity-30"
         />

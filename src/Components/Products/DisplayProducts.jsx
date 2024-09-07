@@ -140,7 +140,7 @@ const DisplayProducts = () => {
                   onClick={() => handleAddToCart(product)} // Fix this
                   className="btn mt-3 w-full bg-black text-white"
                 >
-                  <img src="/src/assets/Icon/Added Light.svg" alt="" /> Add to
+                  <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Added%20Light.svg" alt="" /> Add to
                   Cart
                 </button>
               </div>
