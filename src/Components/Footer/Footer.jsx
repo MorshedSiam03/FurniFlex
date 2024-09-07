@@ -49,16 +49,16 @@ const Footer = () => {
         <div className="container mx-auto px-5 flex flex-col md:flex-row justify-between items-center text-sm">
           {/* Left-side Links */}
           <div className="container mx-auto my-4 px-5 flex space-x-6">
-          <a href="#"><img src="/src/assets/Icon/facebook.svg" alt="Facebook" className="w-5 h-5" /></a>
-          <a href="#"><img src="/src/assets/Icon/instagram.svg" alt="Instagram" className="w-5 h-5" /></a>
-          <a href="#"><img src="/src/assets/Icon/new-twitter.svg" alt="X" className="w-5 h-5" /></a>
-          <a href="#"><img src="/src/assets/Icon/linkedin.svg" alt="LinkedIn" className="w-5 h-5" /></a>
+          <a href="#"><img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/7d5128be8cbd4911a76d89da31a0ed56e99c6d36/src/assets/Icon/facebook.svg" alt="Facebook" className="w-5 h-5" /></a>
+          <a href="#"><img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/7d5128be8cbd4911a76d89da31a0ed56e99c6d36/src/assets/Icon/instagram.svg" alt="Instagram" className="w-5 h-5" /></a>
+          <a href="#"><img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/7d5128be8cbd4911a76d89da31a0ed56e99c6d36/src/assets/Icon/new-twitter.svg" alt="X" className="w-5 h-5" /></a>
+          <a href="#"><img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/7d5128be8cbd4911a76d89da31a0ed56e99c6d36/src/assets/Icon/linkedin.svg" alt="LinkedIn" className="w-5 h-5" /></a>
         </div>
           
 
           {/* Right-side Country & Language */}
           <div className="flex text-[#81859F] space-x-2 font-semibold my-4 md:my-0">
-            <img src="/src/assets/Icon/united-states-flag-free-png.webp" alt="United States" className="w-7" />
+            <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/main/src/assets/Icon/united-states-flag-free-png.webp" alt="United States" className="w-7" />
             <p>United States (English)</p>
           </div>
         </div>

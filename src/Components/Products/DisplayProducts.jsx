@@ -92,9 +92,7 @@ const DisplayProducts = () => {
                   title: "Product added to cart",
                   showConfirmButton: false,
                   timer: 1500,
-                }).then(() => {
-                    window.location.reload(); // Refresh the page to update cart count
-                  });
+                });
               } else {
                 Swal.fire({
                   icon: "error",
