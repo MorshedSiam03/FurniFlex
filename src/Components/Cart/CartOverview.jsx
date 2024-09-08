@@ -138,7 +138,7 @@ const CartOverview = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 px-20 gap-6">
+      <div className="md:grid grid-cols-3 px-2 lg:px-20 gap-6">
         <div className="col-span-2">
           <h2 className="text-2xl font-semibold mb-4">An overview of your order</h2>
           {items.length === 0 ? (

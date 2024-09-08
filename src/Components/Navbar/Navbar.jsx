@@ -155,7 +155,7 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/SignIn" className="btn">
+            <Link to="/SignIn" className="btn border-2 bg-transparent border-black font-bold px-5 text-[16px] hover:bg-black hover:text-white hover:border-0">
               SignIn
             </Link>
           )}

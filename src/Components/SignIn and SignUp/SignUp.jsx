@@ -48,12 +48,14 @@ const SignUp = () => {
       {/* Left Side: Form Section */}
       <div className="w-full md:w-1/2 flex justify-center items-center bg-white">
         <div className="bg-[#FAFAFA] p-10 rounded-lg shadow-lg w-full max-w-lg">
-          <h2 className="text-2xl font-bold mb-2 text-center">
+         <Link to={'/'}>
+         <h2 className="text-2xl font-bold mb-2 text-center">
             Welcome To{" "}
             <p className="text-blue-500 text-5xl">
               <span className="text-black">Furni</span>Flex
             </p>
           </h2>
+         </Link>
           <p className="text-[#707070] font-semibold text-center mb-6">
             SignUp for purchase your desire products
           </p>
@@ -127,7 +129,7 @@ const SignUp = () => {
 
           {/* Social Sign In */}
           <div className="flex justify-between space-x-2">
-            <button onClick={handleGoogleLogin} className="w-1/2 btn bg-white font-semibold flex items-center justify-center p-3 border border-gray-300 rounded-lg">
+            <button onClick={handleGoogleLogin} className="w-1/2 btn bg-white font-semibold flex items-center justify-center lg:p-3 border border-gray-300 rounded-lg">
               <img
                 src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/e82af5919c77047dc44308423e5aae7f3b67d386/src/assets/Icon/google-logo.svg"
                 alt="Google"
@@ -135,7 +137,7 @@ const SignUp = () => {
               />
               Sign in with Google
             </button>
-            <button className="w-1/2 btn bg-white flex font-semibold items-center justify-center p-3 border border-gray-300 rounded-lg">
+            <button className="w-1/2 btn bg-white flex font-semibold items-center justify-center lg:p-3 border border-gray-300 rounded-lg">
               <img
                 src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/apple-logo.svg"
                 alt="Apple"
@@ -163,7 +165,7 @@ const SignUp = () => {
               alt="FurniFlex"
               className="mx-auto mb-4"
             />
-            <p className="text-gray-300 px-40 mt-4">
+            <p className="text-gray-300 lg:px-40 mt-4">
               Discover a seamless shopping experience with our curated
               collection of products. From fashion to electronics, we bring
               quality.
