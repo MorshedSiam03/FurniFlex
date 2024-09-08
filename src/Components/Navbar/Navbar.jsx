@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { CartContext } from "../../Provider/CartProvider";
 
 const Navbar = () => {
   const { user, Logout } = useContext(AuthContext);
+  const { cartItems } = useContext(CartContext);
   const [items, setItems] = useState([]);
 
   const url = `https://furni-flex-server-fawn.vercel.app/cart?email=${user?.email}`;
@@ -117,13 +119,12 @@ const Navbar = () => {
                 <div className="indicator">
                   <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Added.svg" alt="" />
                   <span className="badge badge-lg bg-[#323232] px-2 py-3 text-white font-medium text-sm indicator-item absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2">
-                    {items.length}
+                  {cartItems.length}
                   </span>
                 </div>
               </Link>
             </div>
           </Link>
-
           {user ? (
             <div className="dropdown dropdown-end">
               <div

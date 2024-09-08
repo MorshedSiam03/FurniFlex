@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { CartContext } from "../../Provider/CartProvider";
 
 const DisplayProducts = () => {
   const { user } = useContext(AuthContext);
+  const { cartItems, updateCartItems } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -65,6 +67,7 @@ const DisplayProducts = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.modifiedCount > 0) {
+                updateCartItems(user.email);
                 Swal.fire({
                   position: "center",
                   icon: "success",
@@ -92,6 +95,7 @@ const DisplayProducts = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
+                updateCartItems(user.email);
                 Swal.fire({
                   position: "center",
                   icon: "success",

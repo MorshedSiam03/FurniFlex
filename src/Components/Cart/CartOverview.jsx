@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { CartContext } from "../../Provider/CartProvider";
 
 const CartOverview = () => {
   const { user } = useContext(AuthContext);
+  const { cartItems, updateCartItems } = useContext(CartContext); 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -53,6 +55,7 @@ const CartOverview = () => {
           })
           .then((data) => {
             if (data.deletedCount > 0) {
+              updateCartItems(user.email);
               // Update UI immediately
               const remainingItems = items.filter((item) => item._id !== id);
               setItems(remainingItems);

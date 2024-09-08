@@ -11,6 +11,7 @@ import CartOverview from "./Components/Cart/CartOverview.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import PrivateRoute from "./Components/Routes/PrivateRoute.jsx";
 import Products from "./Components/Products/Products.jsx";
+import CartProvider from "./Provider/CartProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
+      <CartProvider>
       <RouterProvider router={router} />
+      </CartProvider>
     </AuthProvider>
   </StrictMode>
 );
