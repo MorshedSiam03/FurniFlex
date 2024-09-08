@@ -37,25 +37,31 @@ const DisplayProducts = () => {
       image: product.image,
       CustomerName: user.displayName,
       email: user.email,
-      quantity: 1 // Default quantity is 1
+      quantity: 1, // Default quantity is 1
     };
-  
-    // First check if the product is already in the cart
-    fetch(`https://furni-flex-server-fawn.vercel.app/cart?email=${user.email}&itemId=${product._id}`)
+
+    // Fetch the cart for the user and see if the product is already in the cart by itemId
+    fetch(`https://furni-flex-server-fawn.vercel.app/cart?email=${user.email}`)
       .then((res) => res.json())
-      .then((data) => {
-        if (data.length > 0) {
+      .then((cartItems) => {
+        const existingItem = cartItems.find(
+          (item) => item.itemId === product._id
+        ); // Check if item is already in the cart
+
+        if (existingItem) {
           // If the product is already in the cart, update its quantity
-          const existingItem = data[0];
           const updatedQuantity = existingItem.quantity + 1; // Increment quantity
-  
-          fetch(`https://furni-flex-server-fawn.vercel.app/cart/${existingItem._id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ quantity: updatedQuantity }),
-          })
+
+          fetch(
+            `https://furni-flex-server-fawn.vercel.app/cart/${existingItem._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ quantity: updatedQuantity }),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.modifiedCount > 0) {
@@ -75,7 +81,7 @@ const DisplayProducts = () => {
               }
             });
         } else {
-          // If the product is not in the cart, add it
+          // If the product is not in the cart, add it as a new item
           fetch("https://furni-flex-server-fawn.vercel.app/cart", {
             method: "POST",
             headers: {
@@ -109,7 +115,9 @@ const DisplayProducts = () => {
     <div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
         {displayedProducts.map((product) => (
-          <div key={product._id}> {/* Use _id or id */}
+          <div key={product._id}>
+            {" "}
+            {/* Use _id or id */}
             <div className="rounded-xl bg-base-100 p-5 shadow-sm">
               <figure>
                 <img
@@ -138,8 +146,11 @@ const DisplayProducts = () => {
                   onClick={() => handleAddToCart(product)} // Fix this
                   className="btn mt-3 w-full bg-black text-white"
                 >
-                  <img src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Added%20Light.svg" alt="" /> Add to
-                  Cart
+                  <img
+                    src="https://raw.githubusercontent.com/MorshedSiam03/FurniFlex/619e205aa49582dce5221ef393d7f8b8ac7d0325/src/assets/Icon/Added%20Light.svg"
+                    alt=""
+                  />{" "}
+                  Add to Cart
                 </button>
               </div>
             </div>
